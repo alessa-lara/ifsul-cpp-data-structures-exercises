@@ -1,5 +1,5 @@
-#include "queue.hpp"
-#include "queueFunctions.hpp"
+#include "lib/queue.hpp"
+#include "lib/queueFunctions.hpp"
 
 int main() {
 

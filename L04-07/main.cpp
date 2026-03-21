@@ -1,4 +1,4 @@
-#include "dynStack.hpp"
+#include "lib/stackDyn.hpp"
 #include <iostream>
 
 using namespace std;

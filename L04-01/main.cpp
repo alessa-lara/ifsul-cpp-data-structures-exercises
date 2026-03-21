@@ -1,4 +1,4 @@
-#include "stackDyn.hpp"
+#include "lib/stackDyn.hpp"
 #include <random>
 
 using namespace std;
