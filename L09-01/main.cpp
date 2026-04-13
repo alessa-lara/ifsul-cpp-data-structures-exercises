@@ -1,6 +1,7 @@
 #include "lib/menu.hpp"
 #include "lib/queueDyn.hpp"
 #include "lib/stackDyn.hpp"
+#include "lib/hang.hpp"
 
 using namespace std;
 
@@ -10,7 +11,7 @@ struct Cliente {
     uint idade;
     float saldo;
 
-    Cliente();
+    Cliente() = default;
     Cliente(string nome, int codigo, uint idade, float saldo) {
         this->nome = nome;
         this->codigo = codigo;
@@ -65,7 +66,7 @@ void ordenar(Stack<Cliente>& stack) {
 }
 
 // THROWS: logic_error
-void cadastrar(Stack<Cliente> pilhaCad) {
+void cadastrar(Stack<Cliente>& pilhaCad) {
     string nome;
     int codigo;
     uint idade;
@@ -100,7 +101,7 @@ void cadastrar(Stack<Cliente> pilhaCad) {
 }
 
 // THROWS: logic_error
-void addToQueue(Queue<int> queue, Stack<Cliente> cadastros, int codigo) {
+void addToQueue(Queue<int>& queue, Stack<Cliente>& cadastros, int codigo) {
     if ( search(queue, codigo) ) {
         throw logic_error("Cliente já existe na fila");
     }
@@ -125,7 +126,8 @@ int main() {
     Queue<int> P;
     Queue<int> N;
 
-    string opcoes[5] = {
+    string opcoes[6] = {
+        "sair",
         "cadastrar",
         "adicionar na fila",
         "mostrar",
@@ -144,13 +146,25 @@ int main() {
                 } catch ( logic_error& e ) {
                     cout << e.what();
                 }
+                cout << endl;
+                hang();
                 break;
-        }
-
-        try {
-            addToQueue(P, cadastro, 0);
-        } catch ( logic_error& e ) {
-            cout << e.what();
+            case 2:
+                try {
+                    addToQueue(P, cadastro, 0);
+                } catch ( logic_error& e ) {
+                    cout << e.what();
+                }
+                cout << endl;
+                hang();
+                break;
+            case 3:
+                show(P);
+                cout << endl;
+                hang();
+                show(N);
+                cout << endl;
+                hang();
         }
     } while ( ret != 0 );
 
