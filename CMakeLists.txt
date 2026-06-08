@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.10.0)
 project(ed-1-exercicios VERSION 0.1.0 LANGUAGES C CXX)
+set(CMAKE_BUILD_TYPE Debug)
 
 include_directories(../ifsul-cpp/lib)
 
@@ -9,3 +10,4 @@ add_executable(L03-03 L03-03/main.cpp)
 add_executable(L03-04 L03-04/main.cpp)
 add_executable(L03-05 L03-05/main.cpp)
 add_executable(L09-01 L09-01/main.cpp L09-01/lib/menu.cpp)
+add_executable(L11-01 L11-01/main.cpp)
